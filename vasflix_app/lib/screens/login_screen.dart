@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:vasflix_app/components/button.dart';
 import 'package:vasflix_app/components/logo_vasflix.dart';
 import 'package:vasflix_app/config/theme_app.dart';
+import 'package:vasflix_app/screens/home_screen.dart';
+import 'package:vasflix_app/screens/sign_in_screen.dart';
+import 'package:vasflix_app/screens/sign_up_screen.dart';
 
 class LoginPageScreen extends StatelessWidget {
   const LoginPageScreen({super.key});
@@ -32,6 +35,21 @@ class SignButtons extends StatelessWidget {
     super.key,
   });
 
+  void goToSignInPage(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const SignInScreen()));
+  }
+
+  void goToSignUpPage(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const SignUpScreen()));
+  }
+
+  void goToHomePage(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -42,7 +60,7 @@ class SignButtons extends StatelessWidget {
           height: 85,
         ),
         Button(
-          action: () {},
+          action: () => goToSignInPage(context),
           text: "Log in",
           backgroundColor: caribbean,
           foreground: white,
@@ -53,7 +71,7 @@ class SignButtons extends StatelessWidget {
           height: 16,
         ),
         Button(
-          action: () {},
+          action: () => goToSignUpPage(context),
           text: "Sign Up",
           backgroundColor: navy,
           foreground: white,
@@ -111,7 +129,7 @@ class SignButtons extends StatelessWidget {
           height: 16,
         ),
         Button(
-          action: () {},
+          action: () => goToHomePage(context),
           text: "Enter as a guest",
           backgroundColor: white,
           hasIcon: true,

@@ -11,7 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        debugShowCheckedModeBanner: false, home: LoginPageScreen());
+      debugShowCheckedModeBanner: false,
+      home: LoginPageScreen(),
+    );
   }
 }
 //Para el commit y apartar mi pantallaa
