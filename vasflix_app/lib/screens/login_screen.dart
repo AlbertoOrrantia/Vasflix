@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:vasflix_app/components/button.dart';
 import 'package:vasflix_app/components/logo_vasflix.dart';
@@ -5,9 +6,26 @@ import 'package:vasflix_app/config/theme_app.dart';
 import 'package:vasflix_app/screens/home_screen.dart';
 import 'package:vasflix_app/screens/sign_in_screen.dart';
 import 'package:vasflix_app/screens/sign_up_screen.dart';
+import 'package:vasflix_app/services/auth_service.dart';
 
-class LoginPageScreen extends StatelessWidget {
+class LoginPageScreen extends StatefulWidget {
   const LoginPageScreen({super.key});
+
+  @override
+  State<LoginPageScreen> createState() => _LoginPageScreenState();
+}
+
+class _LoginPageScreenState extends State<LoginPageScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    super.initState();
+    Firebase.initializeApp().whenComplete(() {
+      print("completed");
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +134,8 @@ class SignButtons extends StatelessWidget {
           height: 30,
         ),
         Button(
-          action: () {},
+          action: () =>
+              AuthService().signInWithGoogle().then(goToHomePage(context)),
           text: "Sign in with Google",
           hasImage: true,
           image: "google.png",
