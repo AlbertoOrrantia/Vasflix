@@ -18,8 +18,6 @@ class LoginPageScreen extends StatefulWidget {
 class _LoginPageScreenState extends State<LoginPageScreen> {
   @override
   void initState() {
-    // TODO: implement initState
-
     super.initState();
     Firebase.initializeApp().whenComplete(() {
       print("completed");
@@ -30,6 +28,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Expanded(
           child: Stack(
         fit: StackFit.expand,

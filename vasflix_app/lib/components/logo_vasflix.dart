@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
 class LogoVasflix extends StatelessWidget {
-  const LogoVasflix({super.key});
+  final double? spacingHeight, logoHeight, logoWidth, letterHeight, letterWidth;
+
+  const LogoVasflix({
+    super.key,
+    this.spacingHeight = 30,
+    this.logoHeight = 145,
+    this.logoWidth = 145,
+    this.letterHeight = 33,
+    this.letterWidth = 164,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -9,11 +18,18 @@ class LogoVasflix extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset("assets/images/vasflixLogo.png"),
-        const SizedBox(
-          height: 30,
+        Image.asset(
+          "assets/images/vasflixLogo.png",
+          height: logoHeight,
         ),
-        Image.asset("assets/images/VasflixLetter.png"),
+        SizedBox(
+          height: spacingHeight,
+        ),
+        Image.asset(
+          "assets/images/VasflixLetter.png",
+          height: letterHeight,
+          width: letterWidth,
+        ),
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:vasflix_app/screens/login_screen.dart';
 
 void main() {
@@ -10,9 +11,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginPageScreen(),
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          currentFocus.focusedChild!.unfocus();
+        }
+      },
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: LoginPageScreen(),
+      ),
     );
   }
 }
