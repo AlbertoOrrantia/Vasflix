@@ -11,6 +11,7 @@ class CustomField extends StatefulWidget {
   final Widget? suffixIcon;
   final bool? isPassword;
   final TextInputType? keyboardType;
+  final TextEditingController? controller;
   const CustomField(
       {super.key,
       required this.label,
@@ -22,7 +23,8 @@ class CustomField extends StatefulWidget {
       this.iconColor = black,
       this.suffixIcon,
       this.isPassword = false,
-      this.keyboardType = TextInputType.text});
+      this.keyboardType = TextInputType.text,
+      this.controller});
 
   @override
   State<CustomField> createState() => _CustomFieldState();
@@ -57,6 +59,7 @@ class _CustomFieldState extends State<CustomField> {
             borderRadius: BorderRadius.circular(10),
           ),
           child: TextFormField(
+            controller: widget.controller,
             decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: widget.hintLabel,

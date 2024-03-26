@@ -9,7 +9,7 @@ class Button extends StatelessWidget {
   final IconData? icon;
   final double? borderRadius;
   final String? image;
-  final GestureTapCallback action;
+  final void Function()? action;
 
   const Button({
     super.key,

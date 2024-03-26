@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:vasflix_app/components/button.dart';
 import 'package:vasflix_app/components/logo_vasflix.dart';
@@ -19,18 +18,13 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
   @override
   void initState() {
     super.initState();
-    Firebase.initializeApp().whenComplete(() {
-      print("completed");
-      setState(() {});
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Expanded(
-          child: Stack(
+      body: Stack(
         fit: StackFit.expand,
         children: [
           Image.asset(
@@ -42,7 +36,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
           ),
           const SignButtons()
         ],
-      )),
+      ),
     );
   }
 }
@@ -78,7 +72,7 @@ class SignButtons extends StatelessWidget {
         ),
         Button(
           action: () => goToSignInPage(context),
-          text: "Log in",
+          text: "Sign in",
           backgroundColor: caribbean,
           foreground: white,
           buttonHeight: 55,

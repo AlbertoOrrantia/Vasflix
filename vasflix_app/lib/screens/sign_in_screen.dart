@@ -1,5 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:vasflix_app/components/button.dart';
 import 'package:vasflix_app/components/field.dart';
 import 'package:vasflix_app/components/logo_vasflix.dart';
@@ -14,6 +16,10 @@ class SignInScreen extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     bool isBigPhone = width >= 430 && height >= 800;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: navy,
+        iconTheme: const IconThemeData(color: white),
+      ),
       resizeToAvoidBottomInset: false,
       backgroundColor: navy,
       body: FormSignIn(
@@ -40,10 +46,46 @@ class FormSignIn extends StatefulWidget {
 class _FormSignInState extends State<FormSignIn> {
   bool hidePassword = true;
   bool isVisible = false;
-  @override
-  void initState() {
-    super.initState();
-    SystemChannels.textInput.invokeMethod('TextInput.hide');
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  void signUserIn() async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        });
+
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: usernameController.text,
+        password: passwordController.text,
+      );
+      Navigator.pop(context);
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        Navigator.pop(context);
+        showDialog(
+            context: context,
+            builder: (context) {
+              return const AlertDialog(
+                title: Text('incorrect user'),
+              );
+            });
+      } else if (e.code == 'wrong-password') {
+        Navigator.pop(context);
+        showDialog(
+            context: context,
+            builder: (context) {
+              return const AlertDialog(
+                title: Text('incorrect password'),
+              );
+            });
+      }
+    }
   }
 
   Widget showPassword() {
@@ -64,9 +106,9 @@ class _FormSignInState extends State<FormSignIn> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          left: widget.width * 0.1,
-          right: widget.width * 0.1,
-          top: widget.height * 0.090),
+        left: widget.width * 0.1,
+        right: widget.width * 0.1,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -115,6 +157,7 @@ class _FormSignInState extends State<FormSignIn> {
             hintLabelColor: black.withOpacity(.40),
             labelWeight: FontWeight.normal,
             keyboardType: TextInputType.emailAddress,
+            controller: usernameController,
           ),
           const SizedBox(
             height: 25,
@@ -128,6 +171,7 @@ class _FormSignInState extends State<FormSignIn> {
             labelWeight: FontWeight.normal,
             suffixIcon: showPassword(),
             isPassword: hidePassword,
+            controller: passwordController,
           ),
           const SizedBox(
             height: 16,
@@ -147,7 +191,7 @@ class _FormSignInState extends State<FormSignIn> {
             height: widget.height * 0.080,
           ),
           Button(
-            action: () => {},
+            action: () => signUserIn(),
             text: "Log in",
             backgroundColor: caribbean,
             foreground: white,

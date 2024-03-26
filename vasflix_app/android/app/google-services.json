@@ -7,12 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:236481845312:android:5bdf623d23e4d6823327a5",
+        "mobilesdk_app_id": "1:236481845312:android:085e430b6cba58e63327a5",
         "android_client_info": {
-          "package_name": "com.vasflix"
+          "package_name": "com.example.vasflix_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "236481845312-3v5t9ul4jrt42fuc5s0e2d6upr04s69m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCqyj9ErfKPG6PHrJ4oV_6ikKxHaX1cdR8"
@@ -20,7 +25,63 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236481845312-3v5t9ul4jrt42fuc5s0e2d6upr04s69m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "236481845312-9be5enu2n0fc25b5ound11gee1fs2cp6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.vasflix"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236481845312:android:5bdf623d23e4d6823327a5",
+        "android_client_info": {
+          "package_name": "com.vasflix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236481845312-hdr8n7j0bgl17gi4trba84bfcu5fvmh3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vasflix",
+            "certificate_hash": "d474bb24e5ef306cd0377e6e6f44d293af0707ba"
+          }
+        },
+        {
+          "client_id": "236481845312-3v5t9ul4jrt42fuc5s0e2d6upr04s69m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqyj9ErfKPG6PHrJ4oV_6ikKxHaX1cdR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236481845312-3v5t9ul4jrt42fuc5s0e2d6upr04s69m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "236481845312-9be5enu2n0fc25b5ound11gee1fs2cp6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.vasflix"
+              }
+            }
+          ]
         }
       }
     }
